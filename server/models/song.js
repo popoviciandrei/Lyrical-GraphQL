@@ -11,9 +11,11 @@ const SongSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'lyric'
   }]
-});
+}, {
+    usePushEach: true
+  });
 
-SongSchema.statics.addLyric = function(id, content) {
+SongSchema.statics.addLyric = function (id, content) {
   const Lyric = mongoose.model('lyric');
 
   return this.findById(id)
@@ -25,7 +27,7 @@ SongSchema.statics.addLyric = function(id, content) {
     });
 }
 
-SongSchema.statics.findLyrics = function(id) {
+SongSchema.statics.findLyrics = function (id) {
   return this.findById(id)
     .populate('lyrics')
     .then(song => song.lyrics);
