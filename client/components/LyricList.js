@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import mutation from '../mutations/likeLyric';
 
 class LyricList extends Component {
 
